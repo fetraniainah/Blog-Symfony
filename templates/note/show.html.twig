@@ -1,0 +1,49 @@
+{% extends 'home.html.twig' %}
+
+{% block title %}Show{% endblock %}
+{% block note %}
+<div class="container p-5 mt-5">
+  {% if data is not empty %}
+<div class="card text-center bg-dark">
+  <div class="card-header">
+    <h4 class="text-light">{{ data[0].title }}</h4>
+  </div>
+
+  <div class="card-body">
+    <p class="card-text text-light">{{ data[0].text }}</p>
+        {% if data[0].images is not empty %}
+        <h4 class="text-start text-light">Photos : </h4>
+        {% for image in data[0].images %}
+            <div class="top-img p-2">
+                <img src="{{ asset('upload/' ~ image.url) }}" class="card-img-top" alt="Image">
+            </div>
+        {% endfor %}
+         {% endif %}
+
+        {% if data[0].audio is not empty %}
+        <h4 class="text-start text-light">Audio : </h4>
+        {% for audios in data[0].audio %}
+        <div class="top-img p-2">
+            <audio src="{{ asset('upload/' ~ audios.url)}}" controls class="card-img-top"></audio>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p class="text-start p-3 text-light">Aucun audio</p>
+        {% endif %}
+
+        {% if data[0].videos is not empty %}
+        <h4 class="text-start text-light">Video : </h4>
+        {% for video in data[0].videos %}
+            <video src="{{ asset('upload/' ~ video.url)}}" class="card-img-top" widt="500" controls></video>
+        {% endfor %}
+         {% else %}
+        <p class="text-start p-3 text-light text-light">Aucun video</p>
+    {% endif %}
+  </div>
+</div>
+{% else %}
+    <p class="text-center text-light text-light">Aucun donné trouvé</p>
+{% endif %}
+</div>
+{% endblock %}
+

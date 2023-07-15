@@ -1,0 +1,33 @@
+{% extends 'home.html.twig' %}
+
+{% block title %}My note{% endblock %}
+{% block note %}
+<div class="container p-5 mt-5">
+ <h2 class="text-center">My note</h2>
+
+
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        {% for item in res %}
+          {% if item.id==app.user.id %}
+             <div class="card py-3 mt-3">
+              <div class="card-header">
+              <h4 class="text-start">{{item.title}}</h4>
+              </div>
+                <div class="card-body">
+                <p class="text-start">{{item.text}}</p>
+                <img src="{{asset('onu.jpg')}}" class="card-img-top" alt="...">
+                <div class="d-flex justify-content-end">
+                    <a class="nav-link me-2 text-secondary" href="/delete/{{item.id}}">Delete</a>
+                    <a class="nav-link me-2 text-secondary" href="/edit/{{item.id}}">Edit</a>
+                    <a class="nav-link  text-secondary" href="/share/{{item.id}}">Share</a>
+                 </div>
+              </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'home.html.twig' %}
+
+{% block title %}Create{% endblock %}
+{% block note %}
+<div class="container" >
+  <div class="row mx-auto" style="margin-top:10vh">
+    <div class="col-md-5 mx-auto">
+        <h2 class="text-center text-light">Add new article</h2>
+
+        {{ form_start(noteForm) }}
+            {{ form_row(noteForm.title) }}
+            {{ form_row(noteForm.text) }}
+            {{ form_row(noteForm.image) }}
+             {{ form_row(noteForm.audio) }}
+              {{ form_row(noteForm.video) }}
+
+            <button class="btn btn-lg btn-success w-100 mt-4" type="submit">Add</button>
+        {{ form_end(noteForm) }}
+
+          
+    </div>
+  </div>
+</div>
+{% endblock %}
